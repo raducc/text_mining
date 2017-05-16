@@ -40,7 +40,7 @@ class BaseFeatures(models.Model):
     TYPE_STANDARD_DEVIATION_SENTENCE = 18
 
     TYPES = (
-        (TYPE_COMA, 'Coma'),
+        (TYPE_COMA, ','),
         (TYPE_SEMICOLON, 'Semicolon'),
         (TYPE_QUOTATIO, 'Quotatio'),
         (TYPE_EXCLAMATIO, 'Exclamatio'),
