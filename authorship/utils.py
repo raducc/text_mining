@@ -1,3 +1,4 @@
+from sklearn.svm import LinearSVC
 import math
 import nltk
 import re
@@ -48,3 +49,15 @@ class Features(object):
         standard_deviation_sentence = math.sqrt(cnt / len(sentences))
         features.append(standard_deviation_sentence)
         return features
+
+
+class Trainer(object):
+
+    def __init__(self, training_set=None):
+        self.clfr = LinearSVC()
+
+    def train(self, train_datas, train_authors):
+        self.clfr.fit(train_datas, train_authors)
+
+    def predict(self, test_data) :
+        return self.clfr.predict(test_data)[0]
