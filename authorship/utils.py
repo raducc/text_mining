@@ -5,31 +5,20 @@ import re
 
 
 class Features(object):
+    features_words = [',', "'", '!', 'and', 'but', 'however', 'if', 'that', 'more', 'must', 'might', 'this', 'very']
 
     def extract_features(self, docname):
         the_docfile = open(docname, "r")
         data = the_docfile.read()
         data = re.sub(r'\s+', ' ', data).replace("\n", " ").lower()
         the_docfile.close()
+        # import ipdb; ipdb.set_trace()
         tokenized_data = nltk.tokenize.word_tokenize(data)
+        # nltk.FreqDist(tokenized_data)
         total_tokens = len(tokenized_data) / 1000
-        features = [
-            tokenized_data.count(',') / total_tokens,
-            tokenized_data.count(';') / total_tokens,
-            (tokenized_data.count('"') + tokenized_data.count("'")) / total_tokens,
-            tokenized_data.count('!') / total_tokens,
-            tokenized_data.count('-') / total_tokens,
-            tokenized_data.count('and') / total_tokens,
-            tokenized_data.count('but') / total_tokens,
-            tokenized_data.count('however') / total_tokens,
-            tokenized_data.count('if') / total_tokens,
-            tokenized_data.count('that') / total_tokens,
-            tokenized_data.count('more') / total_tokens,
-            tokenized_data.count('must') / total_tokens,
-            tokenized_data.count('might') / total_tokens,
-            tokenized_data.count('this') / total_tokens,
-            tokenized_data.count('very') / total_tokens,
-        ]
+        features = []
+        for word in self.features_words:
+            features.append(tokenized_data.count(word) / total_tokens)
 
         # mean word length
         regex = re.compile(r'\b((?=\D)[\w]+)\b')

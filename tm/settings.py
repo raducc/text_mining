@@ -122,12 +122,15 @@ STATIC_URL = '/static/'
 SERVER_IP = '127.0.0.1'
 
 DATABASES = {
-    'default': {  # localhost
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tm',
-        'USER': 'root',
-        'PASSWORD': 'q1w2e3r4',
-        'HOST': SERVER_IP,
-        'PORT': '3306',
-    }
+    # 'default': {  # localhost
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'tm',
+    #     'USER': 'root',
+    #     'PASSWORD': 'q1w2e3r4',
+    #     'HOST': SERVER_IP,
+    #     'PORT': '3306',
+    # }
 }
+
+dataset_dir = "dataset"
+features_file = "features.json"
