@@ -33,5 +33,5 @@ class Command(BaseCommand):
 
         author_nr = 0
         for data in test_datas:
-            print (trainer.predict([data]), test_authors[author_nr])
+            print(trainer.predict([data]), test_authors[author_nr])
             author_nr += 1

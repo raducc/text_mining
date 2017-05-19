@@ -134,3 +134,4 @@ DATABASES = {
 
 dataset_dir = "dataset"
 features_file = "features.json"
+bayse_features_file = "base_features.json"
