@@ -73,7 +73,7 @@ class Trainer(object):
     def train(self, train_datas, train_authors):
         self.clfr.fit(train_datas, train_authors)
 
-    def predict(self, test_data) :
+    def predict(self, test_data):
         return self.clfr.predict(test_data)[0]
 
 
@@ -84,10 +84,6 @@ class BayseTrainer(object):
 
         for auth in set(train_authors):
             self.classes_prob.append(train_authors.count(auth)/len(train_authors))
-
-
-
-
 
 
 class SvmTrainer(object):
