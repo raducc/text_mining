@@ -19,26 +19,19 @@ class Command(BaseCommand):
         author_nr = 0
         train_datas = []
         train_authors = []
+        test_datas = []
+        test_authors = []
         for author, features in features_dict.items():
             authors_dict[author_nr] = author
-            train_datas.extend(features)
-            train_authors.extend([author_nr] * len(features))
+            train_datas.extend(features[2:])
+            train_authors.extend([author_nr] * len(features[2:]))
+            test_datas.extend(features[:2])
+            test_authors.extend([author_nr] * 2)
             author_nr += 1
         trainer = Trainer()
         trainer.train(train_datas, train_authors)
 
-        ee = Features().extract_features('./dataset/charlzdickens/Bleak House.txt')
-        pprint(ee)
-        # ff = Features().extract_features('./dataset/charlzdickens/Hard Times.txt')
-        # pprint(ff)
-        gg = Features().extract_features('./dataset/charlzdickens/Hunted Down.txt')
-        # pprint(gg)
-        print ("")
-        hh = Features().extract_features('./dataset/George Eliot/Adam Bede by George Eliot.txt')
-        pprint(hh)
-        dd = Trainer()
-        dd.train([gg, hh], [0, 1])
-        print (dd.predict([ee]))
-
-
-
+        author_nr = 0
+        for data in test_datas:
+            print (trainer.predict([data]), test_authors[author_nr])
+            author_nr += 1
